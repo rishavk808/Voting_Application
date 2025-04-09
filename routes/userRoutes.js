@@ -24,7 +24,7 @@ router.post('/signup',async (req,res) =>{
         console.log(err);
         res.status(500).json({error: 'Internal Server Error'});
     }
-})
+});
 
 router.post('/login', async(req,res)=>{
     try{
@@ -48,4 +48,17 @@ router.post('/login', async(req,res)=>{
         console.error(err);
         res.status(500).json({error: 'Internal server error'});
     }
-})
+});
+
+router.get('/profile',jwtAuthMiddleware,async (req,res) => {
+    try{
+       const userData = req.user;
+
+       const userId = userData.id;
+       const user = await Person.findById(userId);
+       res.status(200).json({user});
+    }catch(err){
+        console.error(err);
+        res.status(500).json({error: 'Internal Server Error'});
+    }
+});
