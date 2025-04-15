@@ -9,7 +9,7 @@ const mongoURL = process.env.MONGODB_URL_LOCAL;
 //   useNewUrlParser: true,
 //   useUnifiedTopology: true,
 // });
-mongoose.connect('mongodb://localhost:27017/mydb');
+mongoose.connect('mongodb://localhost:27017/voting');
 // Assign the default connection to the variable 'db'
 const db = mongoose.connection;
 
